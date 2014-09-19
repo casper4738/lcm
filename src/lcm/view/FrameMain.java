@@ -21,6 +21,7 @@ public class FrameMain extends javax.swing.JFrame {
     private PanelIntroduction panelIntroduction;
     private PanelIshiharaTest panelIshiharaTest;
     private PanelTestResult panelTestResult;
+    private PanelIdentity panelIdentity;
 
     public FrameMain() {
         initComponents();
@@ -30,19 +31,33 @@ public class FrameMain extends javax.swing.JFrame {
         panelIntroduction = new PanelIntroduction(this);
         panelIshiharaTest = new PanelIshiharaTest(this);
         panelTestResult = new PanelTestResult(this);
+        panelIdentity = new PanelIdentity(this);
         
         panelIntroduction.setOpaque(false);
         panelIshiharaTest.setOpaque(false);
         panelTestResult.setOpaque(false);
+        panelIdentity.setOpaque(false);
 
         panelMain.add(panelIntroduction, "card1");
         panelMain.add(panelIshiharaTest, "card2");
         panelMain.add(panelTestResult, "card3");
 
+        jPanel1.add(panelIdentity, "card1");
+        jPanel1.add(panelTest, "card2");
+
         setResizable(false);
         setLocationRelativeTo(null);
         buttonTestResult.setEnabled(false);
         buttonIshiharaTest.setEnabled(false);
+        
+    }
+    
+    public void showPanelIdentity() {
+        ((CardLayout) jPanel1.getLayout()).show(jPanel1, "card1");
+    }
+    
+    public void showPanelTest() {
+        ((CardLayout) jPanel1.getLayout()).show(jPanel1, "card2");
     }
 
     /**
@@ -59,6 +74,7 @@ public class FrameMain extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        panelTest = new javax.swing.JPanel();
         panelMain = new lcm.component.IPanelGlass();
         jPanel2 = new javax.swing.JPanel();
         buttonIntroduction = new javax.swing.JButton();
@@ -105,6 +121,9 @@ public class FrameMain extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.setOpaque(false);
+        jPanel1.setLayout(new java.awt.CardLayout());
+
+        panelTest.setOpaque(false);
 
         panelMain.setLayout(new java.awt.CardLayout());
 
@@ -142,31 +161,33 @@ public class FrameMain extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelTestLayout = new javax.swing.GroupLayout(panelTest);
+        panelTest.setLayout(panelTestLayout);
+        panelTestLayout.setHorizontalGroup(
+            panelTestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelTestLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelMain, javax.swing.GroupLayout.DEFAULT_SIZE, 519, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(panelTestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelMain, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE)
+                    .addGroup(panelTestLayout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton4)))
                 .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        panelTestLayout.setVerticalGroup(
+            panelTestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelTestLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(panelMain, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
+                .addComponent(panelMain, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(panelTestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton4))
                 .addContainerGap())
         );
+
+        jPanel1.add(panelTest, "card2");
 
         iPanelBg1.add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -250,6 +271,7 @@ public class FrameMain extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private lcm.component.IPanelGlass panelMain;
+    private javax.swing.JPanel panelTest;
     // End of variables declaration//GEN-END:variables
 
     public List<Plate> getListPlates() {
