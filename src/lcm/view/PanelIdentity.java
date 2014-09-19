@@ -2,10 +2,19 @@
  * Netbeans 8.0 
  * JDK 1.7  
  */
-
 package lcm.view;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.DecimalFormat;
+import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import lcm.User;
+import swingx.utility.FilterInput;
 
 /**
  *
@@ -18,13 +27,35 @@ public class PanelIdentity extends javax.swing.JPanel {
      */
     private DecimalFormat format;
     private FrameMain frameMain;
+
     public PanelIdentity(FrameMain frameMain) {
         initComponents();
-        
+
         this.frameMain = frameMain;
-        
+
         format = new DecimalFormat("#00000");
-        textID.setText(format.format(1));
+
+        Properties properties = new Properties();
+
+        File file = new File("config.xml");
+
+        try {
+            int id = 1;
+            if (file.exists()) {
+                properties.loadFromXML(new FileInputStream(file));
+                id = new Integer(properties.getProperty("NUMBER", "0")) + 1;
+            }
+            properties.setProperty("NUMBER", format.format(id));
+            properties.storeToXML(new FileOutputStream(file), "APLIKASI TES BUTA WARNA MENGGUNAKAN LCM");
+            textID.setText(format.format(id));
+        } catch (Exception ex) {
+            Logger.getLogger(PanelIdentity.class.getName()).log(Level.SEVERE, null, ex);
+            textID.setText(format.format(1));
+        }
+
+        textName.setDocument(new FilterInput().getTextLimit(50, true));
+        textJobs.setDocument(new FilterInput().getTextLimit(100, true));
+        textAddress.setDocument(new FilterInput().getTextLimit(300, true));
     }
 
     /**
@@ -43,101 +74,125 @@ public class PanelIdentity extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jSpinner1 = new javax.swing.JSpinner();
+        textAddress = new javax.swing.JTextArea();
+        textAge = new javax.swing.JSpinner();
         textName = new lcm.component.ITextField();
-        iTextField2 = new lcm.component.ITextField();
+        textJobs = new lcm.component.ITextField();
         textID = new lcm.component.ITextField();
+        iPanelGlass5 = new lcm.component.IPanelGlass();
+        iPanelGlass3 = new lcm.component.IPanelGlass();
+        iPanelGlass4 = new lcm.component.IPanelGlass();
         iPanelGlass2 = new lcm.component.IPanelGlass();
         jButton1 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
+        setPreferredSize(new java.awt.Dimension(547, 436));
+
         iPanelGlass1.setBackgroundImage(new javax.swing.ImageIcon(getClass().getResource("/lcm/resources/eye_1572775c.jpg"))); // NOI18N
+        iPanelGlass1.setOpaqueImage(false);
+        iPanelGlass1.setLayout(null);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel3.setText("Age :");
+        iPanelGlass1.add(jLabel3);
+        jLabel3.setBounds(10, 97, 52, 14);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel2.setText("Name :");
+        iPanelGlass1.add(jLabel2);
+        jLabel2.setBounds(10, 57, 52, 14);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel1.setText("ID :");
+        iPanelGlass1.add(jLabel1);
+        jLabel1.setBounds(10, 22, 52, 14);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel4.setText("Jobs :");
+        iPanelGlass1.add(jLabel4);
+        jLabel4.setBounds(10, 130, 52, 14);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel5.setText("Address :");
+        iPanelGlass1.add(jLabel5);
+        jLabel5.setBounds(10, 167, 52, 14);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        jScrollPane1.setOpaque(false);
+
+        textAddress.setColumns(20);
+        textAddress.setRows(5);
+        jScrollPane1.setViewportView(textAddress);
+
+        iPanelGlass1.add(jScrollPane1);
+        jScrollPane1.setBounds(98, 167, 410, 96);
+
+        textAge.setModel(new javax.swing.SpinnerNumberModel(5, 5, 100, 1));
+        iPanelGlass1.add(textAge);
+        textAge.setBounds(98, 94, 60, 20);
 
         textName.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        iPanelGlass1.add(textName);
+        textName.setBounds(98, 52, 410, 25);
 
-        iTextField2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        textJobs.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        iPanelGlass1.add(textJobs);
+        textJobs.setBounds(98, 125, 410, 25);
 
         textID.setEditable(false);
+        textID.setForeground(new java.awt.Color(0, 0, 51));
         textID.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        iPanelGlass1.add(textID);
+        textID.setBounds(98, 17, 109, 25);
 
-        javax.swing.GroupLayout iPanelGlass1Layout = new javax.swing.GroupLayout(iPanelGlass1);
-        iPanelGlass1.setLayout(iPanelGlass1Layout);
-        iPanelGlass1Layout.setHorizontalGroup(
-            iPanelGlass1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(iPanelGlass1Layout.createSequentialGroup()
+        iPanelGlass5.setBackgroundImage(new javax.swing.ImageIcon(getClass().getResource("/lcm/resources/optometrist-eye-test.jpg"))); // NOI18N
+
+        iPanelGlass3.setBackgroundImage(new javax.swing.ImageIcon(getClass().getResource("/lcm/resources/eye-exam.jpg"))); // NOI18N
+
+        javax.swing.GroupLayout iPanelGlass3Layout = new javax.swing.GroupLayout(iPanelGlass3);
+        iPanelGlass3.setLayout(iPanelGlass3Layout);
+        iPanelGlass3Layout.setHorizontalGroup(
+            iPanelGlass3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 240, Short.MAX_VALUE)
+        );
+        iPanelGlass3Layout.setVerticalGroup(
+            iPanelGlass3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 260, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout iPanelGlass5Layout = new javax.swing.GroupLayout(iPanelGlass5);
+        iPanelGlass5.setLayout(iPanelGlass5Layout);
+        iPanelGlass5Layout.setHorizontalGroup(
+            iPanelGlass5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(iPanelGlass5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(iPanelGlass1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, iPanelGlass1Layout.createSequentialGroup()
-                        .addGroup(iPanelGlass1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addGap(36, 36, 36)
-                        .addGroup(iPanelGlass1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(textName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(iPanelGlass1Layout.createSequentialGroup()
-                                .addGroup(iPanelGlass1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(textID, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, iPanelGlass1Layout.createSequentialGroup()
-                        .addGroup(iPanelGlass1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5))
-                        .addGap(36, 36, 36)
-                        .addGroup(iPanelGlass1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1)
-                            .addComponent(iTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap())
+                .addComponent(iPanelGlass3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(260, Short.MAX_VALUE))
+        );
+        iPanelGlass5Layout.setVerticalGroup(
+            iPanelGlass5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, iPanelGlass5Layout.createSequentialGroup()
+                .addComponent(iPanelGlass3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        iPanelGlass1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel1, jLabel2, jLabel3, jLabel4, jLabel5});
+        iPanelGlass1.add(iPanelGlass5);
+        iPanelGlass5.setBounds(10, 10, 510, 190);
 
-        iPanelGlass1Layout.setVerticalGroup(
-            iPanelGlass1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(iPanelGlass1Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addGroup(iPanelGlass1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(textID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(iPanelGlass1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(textName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(iPanelGlass1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(iPanelGlass1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(iTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(iPanelGlass1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(14, Short.MAX_VALUE))
+        iPanelGlass4.setBackgroundImage(new javax.swing.ImageIcon(getClass().getResource("/lcm/resources/eye_1572775c.jpg"))); // NOI18N
+
+        javax.swing.GroupLayout iPanelGlass4Layout = new javax.swing.GroupLayout(iPanelGlass4);
+        iPanelGlass4.setLayout(iPanelGlass4Layout);
+        iPanelGlass4Layout.setHorizontalGroup(
+            iPanelGlass4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 510, Short.MAX_VALUE)
         );
+        iPanelGlass4Layout.setVerticalGroup(
+            iPanelGlass4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 250, Short.MAX_VALUE)
+        );
+
+        iPanelGlass1.add(iPanelGlass4);
+        iPanelGlass4.setBounds(10, 190, 510, 250);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lcm/resources/Startup-Refresh.PNG"))); // NOI18N
         jButton1.setText("<html>Save And <br>Start Test </html>");
@@ -170,7 +225,7 @@ public class PanelIdentity extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(iPanelGlass2, javax.swing.GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE)
+                    .addComponent(iPanelGlass2, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE)
                     .addComponent(iPanelGlass1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -178,7 +233,7 @@ public class PanelIdentity extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(iPanelGlass1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(iPanelGlass1, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(iPanelGlass2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -190,6 +245,27 @@ public class PanelIdentity extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if (textID.getText().equals("")) {
+            JOptionPane.showMessageDialog(frameMain, "id masih kosong", "APLIKASI TER BUTA WARNA", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        } else if (textName.getText().equals("")) {
+            JOptionPane.showMessageDialog(frameMain, "nama masih kosong", "APLIKASI TER BUTA WARNA", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        } else if (textJobs.getText().equals("")) {
+            JOptionPane.showMessageDialog(frameMain, "pekerjaan masih kosong", "APLIKASI TER BUTA WARNA", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        } else if (textAddress.getText().equals("")) {
+            JOptionPane.showMessageDialog(frameMain, "alamat masih kosong", "APLIKASI TER BUTA WARNA", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+
+        FrameMain.USER = new User();
+        FrameMain.USER.setId(textID.getText());
+        FrameMain.USER.setName(textName.getText());
+        FrameMain.USER.setAge(new Integer(textAge.getValue() + ""));
+        FrameMain.USER.setAddress(textAddress.getText());
+        FrameMain.USER.setJobs(textJobs.getText());
+        FrameMain.USER.setNumberTest(new Integer(textID.getText()) % 32);
         frameMain.showPanelTest();
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -197,7 +273,9 @@ public class PanelIdentity extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private lcm.component.IPanelGlass iPanelGlass1;
     private lcm.component.IPanelGlass iPanelGlass2;
-    private lcm.component.ITextField iTextField2;
+    private lcm.component.IPanelGlass iPanelGlass3;
+    private lcm.component.IPanelGlass iPanelGlass4;
+    private lcm.component.IPanelGlass iPanelGlass5;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
@@ -206,9 +284,10 @@ public class PanelIdentity extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea textAddress;
+    private javax.swing.JSpinner textAge;
     private lcm.component.ITextField textID;
+    private lcm.component.ITextField textJobs;
     private lcm.component.ITextField textName;
     // End of variables declaration//GEN-END:variables
 }

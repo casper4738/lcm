@@ -99,7 +99,7 @@ public class Ishihara {
 
     public boolean check(Plate plate) {
         try {
-            return correct[plate.getPlate()].equals(plate.getAnswer());
+            return correct[plate.getPlate()].toString().equals(plate.getAnswer());
         } catch (Exception e) {
             e.printStackTrace();
             return false;
@@ -108,9 +108,6 @@ public class Ishihara {
 
     public void setAnswer(Object[] answer) {
         this.answer = answer;
-//        for (int i = 0; i < answer.length; i++) {
-//            System.out.println("a:"+answer[i]+" | "+correct[i].equals(answer[i]));
-//        }
     }
     
     public String getCorrect(Plate plate) {
@@ -118,12 +115,12 @@ public class Ishihara {
     }
     
     public boolean plate1() {
-        return correct[0].equals(answer[0]);
+        return correct[0].toString().equals(answer[0].toString());
     }
 
     public boolean r1() {
         for (int i = 0; i < 38; i++) {
-            if (correct[i].equals(answer[i])) {
+            if (correct[i].toString().equals(answer[i].toString())) {
                 return false;
             }
         }
@@ -133,7 +130,7 @@ public class Ishihara {
     public boolean r2() {
         int x = 0;
         for (int i = 1; i <= 16; i++) {
-            if (!correct[i].equals(answer[i])) {
+            if (!correct[i].toString().equals(answer[i].toString())) {
                 x++;
             }
         }
@@ -144,7 +141,7 @@ public class Ishihara {
     public boolean r3() {
         int x = 0;
         for (int i = 21; i <= 24; i++) {
-            if (correct[i].equals(answer[i])) {
+            if (correct[i].toString().equals(answer[i].toString())) {
                 x++;
             }
         }
@@ -154,7 +151,7 @@ public class Ishihara {
     public boolean r4() {
         boolean bool = false;
         for (int i = 17; i <= 21; i++) {
-            if (correct[i].equals(answer[i])) {
+            if (correct[i].toString().equals(answer[i].toString())) {
                 bool = true;
             }
         }
@@ -165,7 +162,7 @@ public class Ishihara {
     public boolean r5() {
         boolean bool = false;
         for (int i = 25; i <= 37; i++) {
-            if (plate[i].equals(answer[i])) {
+            if (plate[i].toString().equals(answer[i].toString())) {
                 bool = true;
             }
         }

@@ -63,13 +63,13 @@ public class PanelTestResult extends javax.swing.JPanel {
         if (!ishihara.plate1()) {
             hasil = "TOTAL COLOR BLIND";
         } else if (ishihara.plate1() && ishihara.r2()) {
-            hasil = "PARSIAL COLOR BLIND 1";
+            hasil = "PARSIAL COLOR BLIND";
         } else if (ishihara.plate1() && ishihara.r3()) {
-            hasil = "PARSIAL COLOR BLIND 2";
+            hasil = "PARSIAL COLOR BLIND";
         } else if (ishihara.plate1() && ishihara.r4()) {
-            hasil = "PARSIAL COLOR BLIND 3";
+            hasil = "PARSIAL COLOR BLIND";
         } else if (ishihara.plate1() && ishihara.r5()) {
-            hasil = "PARSIAL COLOR BLIND 4";
+            hasil = "PARSIAL COLOR BLIND";
         } else {
             hasil = "NOT COLOR BLIND (NORMAL)";
         }

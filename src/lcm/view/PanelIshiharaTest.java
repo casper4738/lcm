@@ -5,9 +5,13 @@
 package lcm.view;
 
 import java.awt.CardLayout;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 import lcm.LCM;
 import lcm.Plate;
 import swingx.utility.FilterInput;
@@ -275,7 +279,7 @@ public class PanelIshiharaTest extends javax.swing.JPanel {
         labelAnswerLeft.setText("<html> " + answerLeft.toString() + " </html>");
         labelAnswerRight.setText("<html> " + answerRight.toString() + " </html>");
     }
-    
+
     private void nextQuestion() {
         if (number == 38) {
             showCard("answer-result");
@@ -300,7 +304,21 @@ public class PanelIshiharaTest extends javax.swing.JPanel {
         main.setC(7);
         main.setM(38);
 
-        int z = 21;
+        try {
+            Properties properties = new Properties();
+            File file = new File("config.xml");
+            int id = 1;
+            if (file.exists()) {
+                properties.loadFromXML(new FileInputStream(file));
+                id = new Integer(properties.getProperty("NUMBER", "0")) + 1;
+            }
+            properties.setProperty("NUMBER", format.format(id));
+            properties.storeToXML(new FileOutputStream(file), "APLIKASI TES BUTA WARNA MENGGUNAKAN LCM");
+            FrameMain.USER.setNumberTest(id);
+        } catch (Exception e) {
+        }
+
+        int z = FrameMain.USER.getNumberTest();
         for (int i = 0; i < 38; i++) {
             Plate plate = new Plate();
             plate.setPlate(z);
@@ -324,7 +342,7 @@ public class PanelIshiharaTest extends javax.swing.JPanel {
 
         jTextField2.setText("");
         jTextField2.requestFocus();
-        
+
         answerLeft = new StringBuilder();
         answerRight = new StringBuilder();
         labelAnswerLeft.setText(answerLeft.toString());

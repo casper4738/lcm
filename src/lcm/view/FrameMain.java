@@ -8,6 +8,7 @@ import java.awt.CardLayout;
 import java.util.List;
 import javax.swing.JButton;
 import lcm.Plate;
+import lcm.User;
 
 /**
  *
@@ -22,9 +23,12 @@ public class FrameMain extends javax.swing.JFrame {
     private PanelIshiharaTest panelIshiharaTest;
     private PanelTestResult panelTestResult;
     private PanelIdentity panelIdentity;
+    public static User USER;
 
     public FrameMain() {
         initComponents();
+        
+        USER = new User();
 
         setTitle("APLIKASI TES BUTA WARNA MENGGUNAKAN LCM");
 
