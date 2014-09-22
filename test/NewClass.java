@@ -40,5 +40,9 @@ public class NewClass {
 //        component.getInputMap().put(KeyStroke.getKeyStroke("2"), "action2");
 //        component.getActionMap().put("action2", action2);
 //    }
+    
+    public static void main(String[] args) {
+        System.out.println("s:"+( 51%32));
+    }
 
 }

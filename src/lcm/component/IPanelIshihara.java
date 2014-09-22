@@ -19,8 +19,8 @@ import javax.swing.JPanel;
 public class IPanelIshihara extends JPanel {
 
     private BufferedImage bufferedImage;
-    private DecimalFormat format;
-    private String[] type;
+    private final DecimalFormat format;
+    private final String[] type;
 
     public IPanelIshihara() {
         format = new DecimalFormat("#00");

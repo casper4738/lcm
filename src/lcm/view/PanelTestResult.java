@@ -4,13 +4,18 @@
  */
 package lcm.view;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import javax.swing.JLabel;
 import lcm.Ishihara;
 import lcm.Plate;
+import lcm.User;
 import lcm.component.TableCellRenderer;
 import lcm.component.TableModelResult;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import swingx.component.table.renderer.TableCellAlignmentRenderer;
+import swingx.utility.UtilityPrint;
 
 /**
  *
@@ -22,11 +27,13 @@ public class PanelTestResult extends javax.swing.JPanel {
      * Creates new form PanelTestResult
      */
     private TableModelResult tableModel;
+    private Ishihara ishihara;
 
     public PanelTestResult(FrameMain main) {
         initComponents();
 
-        
+        ishihara = new Ishihara();
+
         tableModel = new TableModelResult();
         table.setModel(tableModel);
 
@@ -34,48 +41,33 @@ public class PanelTestResult extends javax.swing.JPanel {
         table.getColumnModel().getColumn(1).setCellRenderer(new TableCellAlignmentRenderer(JLabel.CENTER));
         table.getColumnModel().getColumn(2).setCellRenderer(new TableCellAlignmentRenderer(JLabel.CENTER));
         table.getColumnModel().getColumn(3).setCellRenderer(new TableCellAlignmentRenderer(JLabel.CENTER));
-        table.getColumnModel().getColumn(4).setCellRenderer(new TableCellRenderer());
+        table.getColumnModel().getColumn(4).setCellRenderer(new TableCellAlignmentRenderer(JLabel.CENTER));
+        table.getColumnModel().getColumn(5).setCellRenderer(new TableCellRenderer());
 
         table.getColumnModel().getColumn(0).setPreferredWidth(10);
         table.getColumnModel().getColumn(3).setPreferredWidth(10);
-        table.getColumnModel().getColumn(4).setPreferredWidth(15);
+        table.getColumnModel().getColumn(4).setPreferredWidth(10);
+        table.getColumnModel().getColumn(5).setPreferredWidth(15);
         table.setRowHeight(23);
     }
 
     public void set(List<Plate> list) {
-        Ishihara ishihara = new Ishihara(); 
-        
         Object[] answer = new Object[38];
         for (int i = 0; i < list.size(); i++) {
             Plate plate = list.get(i);
             plate.setResult(ishihara.check(plate));
             plate.setCorrect(ishihara.getCorrect(plate));
+            plate.setWeak(ishihara.getWeak(plate));
             answer[i] = plate.getAnswer();
         }
         tableModel.setList(list);
         table.setModel(tableModel);
         table.revalidate();
-        
-        
         ishihara.setAnswer(answer);
-        
-        String hasil = "";
-        if (!ishihara.plate1()) {
-            hasil = "TOTAL COLOR BLIND";
-        } else if (ishihara.plate1() && ishihara.r2()) {
-            hasil = "PARSIAL COLOR BLIND";
-        } else if (ishihara.plate1() && ishihara.r3()) {
-            hasil = "PARSIAL COLOR BLIND";
-        } else if (ishihara.plate1() && ishihara.r4()) {
-            hasil = "PARSIAL COLOR BLIND";
-        } else if (ishihara.plate1() && ishihara.r5()) {
-            hasil = "PARSIAL COLOR BLIND";
-        } else {
-            hasil = "NOT COLOR BLIND (NORMAL)";
-        }
-        labelResult.setText("<html>According to this test you are "+hasil+"</html>".toUpperCase());
+
+        String string = ishihara.getResult();
+        labelResult.setText("<html>" + string + "</html>".toUpperCase());
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -89,6 +81,7 @@ public class PanelTestResult extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
         labelResult = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -108,6 +101,13 @@ public class PanelTestResult extends javax.swing.JPanel {
 
         labelResult.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
 
+        jButton1.setText("PRINT");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -116,22 +116,53 @@ public class PanelTestResult extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 461, Short.MAX_VALUE)
-                    .addComponent(labelResult, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(labelResult, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(labelResult, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(labelResult, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addGap(10, 10, 10))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            String string = ishihara.getResult();
+
+            List<User> list = new ArrayList<>();
+            list.add(FrameMain.USER);
+
+            int par2 = 0;
+            int par3 = 0;
+            for (int i = 0; i < tableModel.getRowCount(); i++) {
+                Plate p = tableModel.get(i);
+                if (p.isResult()) {
+                    par2++;
+                }
+            }
+
+            JRBeanCollectionDataSource dt = new JRBeanCollectionDataSource(list);
+            HashMap map = new HashMap();
+            map.put("parameter1", string.toUpperCase());
+            map.put("parameter2", par2+"");
+            map.put("parameter3", (38 - par2) + "");
+            UtilityPrint.printReport(dt, "report1", map);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelResult;
     private javax.swing.JTable table;

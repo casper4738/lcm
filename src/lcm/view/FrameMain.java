@@ -223,7 +223,14 @@ public class FrameMain extends javax.swing.JFrame {
     }
     
     public void restartTest() {
+        panelIshiharaTest.stopTimer();
+        buttonIshiharaTest.setEnabled(false);
+        buttonTestResult.setEnabled(false);
+    }
+    
+    public void startTest() {
         panelIshiharaTest.reset();
+        panelIshiharaTest.startTimer();
         buttonIshiharaTest.setEnabled(false);
         buttonTestResult.setEnabled(false);
     }

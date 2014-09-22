@@ -14,16 +14,18 @@ public class Plate {
     private String type;
     private Object answer;
     private Object correct;
+    private Object weak;
     private boolean result;
 
     public Plate() {
     }
 
-    public Plate(int plate, String type, Object answer, Object correct, boolean result) {
+    public Plate(int plate, String type, Object answer, Object correct, Object weak, boolean result) {
         this.plate = plate;
         this.type = type;
         this.answer = answer;
         this.correct = correct;
+        this.weak = weak;
         this.result = result;
     }
 
@@ -59,6 +61,14 @@ public class Plate {
         this.correct = correct;
     }
 
+    public Object getWeak() {
+        return weak;
+    }
+
+    public void setWeak(Object weak) {
+        this.weak = weak;
+    }
+
     public boolean isResult() {
         return result;
     }
@@ -66,4 +76,5 @@ public class Plate {
     public void setResult(boolean result) {
         this.result = result;
     }
+
 }

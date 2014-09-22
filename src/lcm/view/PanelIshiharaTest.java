@@ -5,6 +5,8 @@
 package lcm.view;
 
 import java.awt.CardLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -12,6 +14,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+import javax.swing.Timer;
 import lcm.LCM;
 import lcm.Plate;
 import swingx.utility.FilterInput;
@@ -32,6 +35,8 @@ public class PanelIshiharaTest extends javax.swing.JPanel {
     private FrameMain main;
     private StringBuilder answerLeft;
     private StringBuilder answerRight;
+    private Timer timer;
+    private int timeCount = 10;
 
     public PanelIshiharaTest(FrameMain main) {
         initComponents();
@@ -39,8 +44,32 @@ public class PanelIshiharaTest extends javax.swing.JPanel {
         this.main = main;
         number = 0;
         format = new DecimalFormat("#00");
-        reset();
         jTextField2.setDocument(new FilterInput().getTextLimit(2, false));
+        timer = new Timer(1000, new ActionListener() {
+            private int s = 0;
+            private int m = 0;
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                timeCount--;
+                if (timeCount == 0) {
+                    timeCount = 10;
+                    myAnswer = "";
+                    saveAnswer();
+                    number++;
+                    nextQuestion();
+                }
+                jTextField1.setText("0:" + timeCount);
+                s++;
+                if (s == 60) {
+                    s = 0;
+                    m++;
+                }
+                labelTime.setText("0:" + m + ":" + s);
+            }
+        });
+
+        timer.stop();
     }
 
     /**
@@ -69,6 +98,8 @@ public class PanelIshiharaTest extends javax.swing.JPanel {
         buttonResult = new javax.swing.JButton();
         labelAnswerLeft = new javax.swing.JLabel();
         labelAnswerRight = new javax.swing.JLabel();
+        labelTime = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
 
         iPanelIshihara1.setOpaque(false);
 
@@ -80,7 +111,7 @@ public class PanelIshiharaTest extends javax.swing.JPanel {
         );
         iPanelIshihara1Layout.setVerticalGroup(
             iPanelIshihara1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 294, Short.MAX_VALUE)
         );
 
         jLabel1.setFont(new java.awt.Font("Calisto MT", 1, 18)); // NOI18N
@@ -178,16 +209,31 @@ public class PanelIshiharaTest extends javax.swing.JPanel {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(buttonResult, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+            .addComponent(buttonResult, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
         );
 
         panelAnswer.add(jPanel4, "answer-result");
 
-        labelAnswerLeft.setText("<html>\nPlate 01<br>\nPlate 02<br>\nPlate 03<br>\nPlate 04<br>\nPlate 05<br>\nPlate 06<br>\nPlate 07<br>\nPlate 08<br>\nPlate 09<br>\nPlate 10<br>\nPlate 11<br>\nPlate 12<br>\nPlate 13<br>\nPlate 14<br>\nPlate 15<br>\nPlate 16<br>\nPlate 17<br>\nPlate 18<br>\nPlate 19<br>\n</html>");
+        labelAnswerLeft.setText("<html> Plate 01<br> Plate 02<br> Plate 03<br> Plate 04<br> Plate 05<br> Plate 06<br> Plate 07<br> Plate 08<br> Plate 09<br> Plate 10<br> Plate 11<br> Plate 12<br> Plate 13<br> Plate 14<br> Plate 15<br> Plate 16<br> Plate 17<br> Plate 18<br> Plate 19<br> </html>");
         labelAnswerLeft.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
-        labelAnswerRight.setText("<html>\nPlate 01<br>\nPlate 02<br>\nPlate 03<br>\nPlate 04<br>\nPlate 05<br>\nPlate 06<br>\nPlate 07<br>\nPlate 08<br>\nPlate 09<br>\nPlate 10<br>\nPlate 11<br>\nPlate 12<br>\nPlate 13<br>\nPlate 14<br>\nPlate 15<br>\nPlate 16<br>\nPlate 17<br>\nPlate 18<br>\nPlate 19<br>\n</html>");
+        labelAnswerRight.setText("<html> Plate 01<br> Plate 02<br> Plate 03<br> Plate 04<br> Plate 05<br> Plate 06<br> Plate 07<br> Plate 08<br> Plate 09<br> Plate 10<br> Plate 11<br> Plate 12<br> Plate 13<br> Plate 14<br> Plate 15<br> Plate 16<br> Plate 17<br> Plate 18<br> Plate 19<br> </html>");
         labelAnswerRight.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
+        labelTime.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        labelTime.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelTime.setText("00:00:00");
+
+        jTextField1.setEditable(false);
+        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField1.setText("10");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -200,14 +246,19 @@ public class PanelIshiharaTest extends javax.swing.JPanel {
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(panelAnswer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(35, 35, 35)
                         .addComponent(labelAnswerLeft, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(labelAnswerRight, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(15, Short.MAX_VALUE))
+                        .addComponent(labelAnswerRight, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(labelTime, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextField1))
+                            .addComponent(panelAnswer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -216,14 +267,18 @@ public class PanelIshiharaTest extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelAnswerLeft, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelAnswerRight, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(labelAnswerRight, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelAnswerLeft, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(panelAnswer, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(panelAnswer, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelTime, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(iPanelIshihara1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(iPanelIshihara1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -267,6 +322,10 @@ public class PanelIshiharaTest extends javax.swing.JPanel {
         main.showResult();
     }//GEN-LAST:event_buttonResultActionPerformed
 
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
     private void saveAnswer() {
         listPlates.get(number).setType(iPanelIshihara1.getType()[number]);
         listPlates.get(number).setAnswer(myAnswer);
@@ -283,6 +342,7 @@ public class PanelIshiharaTest extends javax.swing.JPanel {
     private void nextQuestion() {
         if (number == 38) {
             showCard("answer-result");
+            stopTimer();
         } else {
             iPanelIshihara1.setPlate(listPlates.get(number).getPlate());
             listPlates.get(number).setType(iPanelIshihara1.getType()[listPlates.get(number).getPlate()]);
@@ -291,12 +351,21 @@ public class PanelIshiharaTest extends javax.swing.JPanel {
             jLabel1.setText("Plate " + format.format(number + 1) + " from 38");
             jTextField2.setText("");
             jTextField2.requestFocus();
+            timeCount = 10;
+            jTextField1.setText("00:" + timeCount);
         }
+    }
+
+    public void stopTimer() {
+        timer.stop();
+    }
+
+    public void startTimer() {
+        timer.restart();
     }
 
     public void reset() {
         number = 0;
-
         listPlates = new ArrayList<>();
 
         LCM main = new LCM();
@@ -319,6 +388,7 @@ public class PanelIshiharaTest extends javax.swing.JPanel {
         }
 
         int z = FrameMain.USER.getNumberTest();
+        z = z % 32;
         for (int i = 0; i < 38; i++) {
             Plate plate = new Plate();
             plate.setPlate(z);
@@ -326,7 +396,9 @@ public class PanelIshiharaTest extends javax.swing.JPanel {
             plate.setAnswer("");
             plate.setResult(false);
             listPlates.add(plate);
-
+            
+            System.out.println(i+"|"+z);
+            
             z = main.getLinearCongruen(z);
         }
 
@@ -370,9 +442,11 @@ public class PanelIshiharaTest extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel labelAnswerLeft;
     private javax.swing.JLabel labelAnswerRight;
+    private javax.swing.JLabel labelTime;
     private javax.swing.JPanel panelAnswer;
     // End of variables declaration//GEN-END:variables
 

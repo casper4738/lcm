@@ -7,7 +7,6 @@ package lcm.view;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.Properties;
 import java.util.logging.Level;
@@ -79,9 +78,31 @@ public class PanelIdentity extends javax.swing.JPanel {
         textName = new lcm.component.ITextField();
         textJobs = new lcm.component.ITextField();
         textID = new lcm.component.ITextField();
-        iPanelGlass5 = new lcm.component.IPanelGlass();
-        iPanelGlass3 = new lcm.component.IPanelGlass();
         iPanelGlass4 = new lcm.component.IPanelGlass();
+        iPa19 = new lcm.component.IPa();
+        iPa20 = new lcm.component.IPa();
+        iPa21 = new lcm.component.IPa();
+        iPa22 = new lcm.component.IPa();
+        iPa23 = new lcm.component.IPa();
+        iPa14 = new lcm.component.IPa();
+        iPa15 = new lcm.component.IPa();
+        iPa16 = new lcm.component.IPa();
+        iPa17 = new lcm.component.IPa();
+        iPa18 = new lcm.component.IPa();
+        iPa5 = new lcm.component.IPa();
+        iPa9 = new lcm.component.IPa();
+        iPa10 = new lcm.component.IPa();
+        iPa11 = new lcm.component.IPa();
+        iPa12 = new lcm.component.IPa();
+        iPa13 = new lcm.component.IPa();
+        iPa2 = new lcm.component.IPa();
+        iPa3 = new lcm.component.IPa();
+        iPa4 = new lcm.component.IPa();
+        iPa6 = new lcm.component.IPa();
+        iPa7 = new lcm.component.IPa();
+        iPa8 = new lcm.component.IPa();
+        iPa1 = new lcm.component.IPa();
+        iPanelGlass3 = new lcm.component.IPanelGlass();
         iPanelGlass2 = new lcm.component.IPanelGlass();
         jButton1 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -130,53 +151,18 @@ public class PanelIdentity extends javax.swing.JPanel {
         iPanelGlass1.add(textAge);
         textAge.setBounds(98, 94, 60, 20);
 
-        textName.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        textName.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         iPanelGlass1.add(textName);
         textName.setBounds(98, 52, 410, 25);
 
-        textJobs.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        textJobs.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         iPanelGlass1.add(textJobs);
         textJobs.setBounds(98, 125, 410, 25);
 
         textID.setEditable(false);
-        textID.setForeground(new java.awt.Color(0, 0, 51));
-        textID.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        textID.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         iPanelGlass1.add(textID);
         textID.setBounds(98, 17, 109, 25);
-
-        iPanelGlass5.setBackgroundImage(new javax.swing.ImageIcon(getClass().getResource("/lcm/resources/optometrist-eye-test.jpg"))); // NOI18N
-
-        iPanelGlass3.setBackgroundImage(new javax.swing.ImageIcon(getClass().getResource("/lcm/resources/eye-exam.jpg"))); // NOI18N
-
-        javax.swing.GroupLayout iPanelGlass3Layout = new javax.swing.GroupLayout(iPanelGlass3);
-        iPanelGlass3.setLayout(iPanelGlass3Layout);
-        iPanelGlass3Layout.setHorizontalGroup(
-            iPanelGlass3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 240, Short.MAX_VALUE)
-        );
-        iPanelGlass3Layout.setVerticalGroup(
-            iPanelGlass3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 260, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout iPanelGlass5Layout = new javax.swing.GroupLayout(iPanelGlass5);
-        iPanelGlass5.setLayout(iPanelGlass5Layout);
-        iPanelGlass5Layout.setHorizontalGroup(
-            iPanelGlass5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(iPanelGlass5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(iPanelGlass3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(260, Short.MAX_VALUE))
-        );
-        iPanelGlass5Layout.setVerticalGroup(
-            iPanelGlass5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, iPanelGlass5Layout.createSequentialGroup()
-                .addComponent(iPanelGlass3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-
-        iPanelGlass1.add(iPanelGlass5);
-        iPanelGlass5.setBounds(10, 10, 510, 190);
 
         iPanelGlass4.setBackgroundImage(new javax.swing.ImageIcon(getClass().getResource("/lcm/resources/eye_1572775c.jpg"))); // NOI18N
 
@@ -193,6 +179,170 @@ public class PanelIdentity extends javax.swing.JPanel {
 
         iPanelGlass1.add(iPanelGlass4);
         iPanelGlass4.setBounds(10, 190, 510, 250);
+
+        iPa19.setRound(false);
+        iPa19.setLayout(new java.awt.BorderLayout());
+
+        iPa20.setRound(false);
+        iPa20.setLayout(new java.awt.BorderLayout());
+
+        iPa21.setRound(false);
+        iPa21.setLayout(new java.awt.BorderLayout());
+
+        iPa22.setRound(false);
+        iPa22.setLayout(new java.awt.BorderLayout());
+
+        iPa23.setRound(false);
+        iPa23.setLayout(new java.awt.BorderLayout());
+        iPa22.add(iPa23, java.awt.BorderLayout.CENTER);
+
+        iPa21.add(iPa22, java.awt.BorderLayout.CENTER);
+
+        iPa20.add(iPa21, java.awt.BorderLayout.CENTER);
+
+        iPa19.add(iPa20, java.awt.BorderLayout.CENTER);
+
+        iPanelGlass1.add(iPa19);
+        iPa19.setBounds(110, 20, 90, 20);
+
+        iPa14.setRound(false);
+        iPa14.setLayout(new java.awt.BorderLayout());
+
+        iPa15.setRound(false);
+        iPa15.setLayout(new java.awt.BorderLayout());
+
+        iPa16.setRound(false);
+        iPa16.setLayout(new java.awt.BorderLayout());
+
+        iPa17.setRound(false);
+        iPa17.setLayout(new java.awt.BorderLayout());
+
+        iPa18.setRound(false);
+        iPa18.setLayout(new java.awt.BorderLayout());
+        iPa17.add(iPa18, java.awt.BorderLayout.CENTER);
+
+        iPa16.add(iPa17, java.awt.BorderLayout.CENTER);
+
+        iPa15.add(iPa16, java.awt.BorderLayout.CENTER);
+
+        iPa14.add(iPa15, java.awt.BorderLayout.CENTER);
+
+        iPanelGlass1.add(iPa14);
+        iPa14.setBounds(70, 120, 430, 40);
+
+        iPa5.setRound(false);
+        iPa5.setLayout(new java.awt.BorderLayout());
+
+        iPa9.setRound(false);
+        iPa9.setLayout(new java.awt.BorderLayout());
+
+        iPa10.setRound(false);
+        iPa10.setLayout(new java.awt.BorderLayout());
+
+        iPa11.setRound(false);
+        iPa11.setLayout(new java.awt.BorderLayout());
+
+        iPa12.setRound(false);
+        iPa12.setLayout(new java.awt.BorderLayout());
+
+        iPa13.setRound(false);
+
+        javax.swing.GroupLayout iPa13Layout = new javax.swing.GroupLayout(iPa13);
+        iPa13.setLayout(iPa13Layout);
+        iPa13Layout.setHorizontalGroup(
+            iPa13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 210, Short.MAX_VALUE)
+        );
+        iPa13Layout.setVerticalGroup(
+            iPa13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        iPa12.add(iPa13, java.awt.BorderLayout.CENTER);
+
+        iPa11.add(iPa12, java.awt.BorderLayout.CENTER);
+
+        iPa10.add(iPa11, java.awt.BorderLayout.CENTER);
+
+        iPa9.add(iPa10, java.awt.BorderLayout.CENTER);
+
+        iPa5.add(iPa9, java.awt.BorderLayout.CENTER);
+
+        iPanelGlass1.add(iPa5);
+        iPa5.setBounds(180, 30, 210, 60);
+
+        iPa2.setRound(false);
+        iPa2.setLayout(new java.awt.BorderLayout());
+
+        iPa3.setRound(false);
+        iPa3.setLayout(new java.awt.BorderLayout());
+
+        iPa4.setRound(false);
+        iPa4.setLayout(new java.awt.BorderLayout());
+
+        iPa6.setRound(false);
+        iPa6.setLayout(new java.awt.BorderLayout());
+
+        iPa7.setRound(false);
+        iPa7.setLayout(new java.awt.BorderLayout());
+
+        iPa8.setRound(false);
+
+        javax.swing.GroupLayout iPa8Layout = new javax.swing.GroupLayout(iPa8);
+        iPa8.setLayout(iPa8Layout);
+        iPa8Layout.setHorizontalGroup(
+            iPa8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        iPa8Layout.setVerticalGroup(
+            iPa8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        iPa7.add(iPa8, java.awt.BorderLayout.CENTER);
+
+        iPa6.add(iPa7, java.awt.BorderLayout.CENTER);
+
+        iPa4.add(iPa6, java.awt.BorderLayout.CENTER);
+
+        iPa3.add(iPa4, java.awt.BorderLayout.CENTER);
+
+        iPa2.add(iPa3, java.awt.BorderLayout.CENTER);
+
+        iPanelGlass1.add(iPa2);
+        iPa2.setBounds(360, 30, 100, 60);
+
+        iPa1.setRound(false);
+
+        javax.swing.GroupLayout iPa1Layout = new javax.swing.GroupLayout(iPa1);
+        iPa1.setLayout(iPa1Layout);
+        iPa1Layout.setHorizontalGroup(
+            iPa1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 510, Short.MAX_VALUE)
+        );
+        iPa1Layout.setVerticalGroup(
+            iPa1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 200, Short.MAX_VALUE)
+        );
+
+        iPanelGlass1.add(iPa1);
+        iPa1.setBounds(10, 10, 510, 200);
+
+        iPanelGlass3.setBackgroundImage(new javax.swing.ImageIcon(getClass().getResource("/lcm/resources/eye-exam.jpg"))); // NOI18N
+
+        javax.swing.GroupLayout iPanelGlass3Layout = new javax.swing.GroupLayout(iPanelGlass3);
+        iPanelGlass3.setLayout(iPanelGlass3Layout);
+        iPanelGlass3Layout.setHorizontalGroup(
+            iPanelGlass3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 510, Short.MAX_VALUE)
+        );
+        iPanelGlass3Layout.setVerticalGroup(
+            iPanelGlass3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 260, Short.MAX_VALUE)
+        );
+
+        iPanelGlass1.add(iPanelGlass3);
+        iPanelGlass3.setBounds(10, 10, 510, 260);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lcm/resources/Startup-Refresh.PNG"))); // NOI18N
         jButton1.setText("<html>Save And <br>Start Test </html>");
@@ -271,11 +421,33 @@ public class PanelIdentity extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private lcm.component.IPa iPa1;
+    private lcm.component.IPa iPa10;
+    private lcm.component.IPa iPa11;
+    private lcm.component.IPa iPa12;
+    private lcm.component.IPa iPa13;
+    private lcm.component.IPa iPa14;
+    private lcm.component.IPa iPa15;
+    private lcm.component.IPa iPa16;
+    private lcm.component.IPa iPa17;
+    private lcm.component.IPa iPa18;
+    private lcm.component.IPa iPa19;
+    private lcm.component.IPa iPa2;
+    private lcm.component.IPa iPa20;
+    private lcm.component.IPa iPa21;
+    private lcm.component.IPa iPa22;
+    private lcm.component.IPa iPa23;
+    private lcm.component.IPa iPa3;
+    private lcm.component.IPa iPa4;
+    private lcm.component.IPa iPa5;
+    private lcm.component.IPa iPa6;
+    private lcm.component.IPa iPa7;
+    private lcm.component.IPa iPa8;
+    private lcm.component.IPa iPa9;
     private lcm.component.IPanelGlass iPanelGlass1;
     private lcm.component.IPanelGlass iPanelGlass2;
     private lcm.component.IPanelGlass iPanelGlass3;
     private lcm.component.IPanelGlass iPanelGlass4;
-    private lcm.component.IPanelGlass iPanelGlass5;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;

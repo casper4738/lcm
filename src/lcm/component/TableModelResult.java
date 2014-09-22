@@ -8,8 +8,6 @@
 package lcm.component;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 import lcm.Plate;
@@ -27,13 +25,6 @@ public class TableModelResult extends AbstractTableModel {
 
     public void setList(List<Plate> list) {
         this.list = list;
-        Collections.sort(list, new Comparator<Plate>() {
-
-            @Override
-            public int compare(Plate o1, Plate o2) {
-                return o1.getPlate() - o2.getPlate();
-            }
-        });
     }
 
     public boolean add(Plate e) {
@@ -71,21 +62,23 @@ public class TableModelResult extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return 5;
+        return 6;
     }
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         switch (columnIndex) {
             case 0:
-                return list.get(rowIndex).getPlate()+1;
+                return rowIndex+1 +"||"+list.get(rowIndex).getPlate();
             case 1:
-                return list.get(rowIndex).getType().toUpperCase();
+                return list.get(list.get(rowIndex).getPlate()).getType().toUpperCase();
             case 2:
                 return list.get(rowIndex).getAnswer().toString().toUpperCase();
             case 3:
                 return list.get(rowIndex).getCorrect();
             case 4:
+                return list.get(rowIndex).getWeak();
+            case 5:
                 return list.get(rowIndex).isResult();
             default:
                 return null;
@@ -104,6 +97,8 @@ public class TableModelResult extends AbstractTableModel {
             case 3:
                 return "CORRECT";
             case 4:
+                return "WEAK / OPTIONAL";
+            case 5:
                 return "RESULT";
             default:
                 return null;

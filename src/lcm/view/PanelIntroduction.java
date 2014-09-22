@@ -42,7 +42,10 @@ public class PanelIntroduction extends javax.swing.JPanel {
         jLabel1.setText("<html><b> Ishihara 38 Plates Test</b>\n<br/>\nThe Ishihara Test is the most well known color blindness test all around the world. It consists of 38 so called pseudoisochromatic plates,\n each of them showing either a number or some lines.  \n<br/><br/><br/>\n <b> How the test works:  </b><br/>\n For each plate you have to either enter the number or you have to  choose the number of lines you can see. \nIf you don't see anything just leave the input field empty. </html>");
         jLabel1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
+        jPanel2.setOpaque(false);
         jPanel2.setLayout(new java.awt.CardLayout());
+
+        jPanel1.setOpaque(false);
 
         jButton1.setText("Start Test");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -53,6 +56,8 @@ public class PanelIntroduction extends javax.swing.JPanel {
         jPanel1.add(jButton1);
 
         jPanel2.add(jPanel1, "card1");
+
+        jPanel3.setOpaque(false);
 
         jButton2.setText("Restart Test");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -88,7 +93,7 @@ public class PanelIntroduction extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         ((CardLayout) jPanel2.getLayout()).show(jPanel2, "card2");
-        main.getButtonIshiharaTest().setEnabled(true);
+        main.startTest();
         main.showCard("card2");
     }//GEN-LAST:event_jButton1ActionPerformed
 
