@@ -105,7 +105,6 @@ public class PanelIdentity extends javax.swing.JPanel {
         iPanelGlass3 = new lcm.component.IPanelGlass();
         iPanelGlass2 = new lcm.component.IPanelGlass();
         jButton1 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(547, 436));
 
@@ -345,7 +344,7 @@ public class PanelIdentity extends javax.swing.JPanel {
         iPanelGlass3.setBounds(10, 10, 510, 260);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lcm/resources/Startup-Refresh.PNG"))); // NOI18N
-        jButton1.setText("<html>Save And <br>Start Test </html>");
+        jButton1.setText("<html>Save And Start Test </html>");
         jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/lcm/resources/Startup-Save.PNG"))); // NOI18N
         jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -355,18 +354,6 @@ public class PanelIdentity extends javax.swing.JPanel {
             }
         });
         iPanelGlass2.add(jButton1);
-
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lcm/resources/close32.png"))); // NOI18N
-        jButton4.setText("Close");
-        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton4.setPreferredSize(new java.awt.Dimension(81, 73));
-        jButton4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        iPanelGlass2.add(jButton4);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -383,16 +370,12 @@ public class PanelIdentity extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(iPanelGlass1, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
+                .addComponent(iPanelGlass1, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(iPanelGlass2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if (textID.getText().equals("")) {
@@ -449,7 +432,6 @@ public class PanelIdentity extends javax.swing.JPanel {
     private lcm.component.IPanelGlass iPanelGlass3;
     private lcm.component.IPanelGlass iPanelGlass4;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

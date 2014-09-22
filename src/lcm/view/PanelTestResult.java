@@ -46,7 +46,7 @@ public class PanelTestResult extends javax.swing.JPanel {
 
         table.getColumnModel().getColumn(0).setPreferredWidth(10);
         table.getColumnModel().getColumn(3).setPreferredWidth(10);
-        table.getColumnModel().getColumn(4).setPreferredWidth(10);
+        table.getColumnModel().getColumn(4).setPreferredWidth(15);
         table.getColumnModel().getColumn(5).setPreferredWidth(15);
         table.setRowHeight(23);
     }

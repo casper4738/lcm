@@ -84,7 +84,6 @@ public class FrameMain extends javax.swing.JFrame {
         buttonIntroduction = new javax.swing.JButton();
         buttonIshiharaTest = new javax.swing.JButton();
         buttonTestResult = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -158,13 +157,6 @@ public class FrameMain extends javax.swing.JFrame {
         });
         jPanel2.add(buttonTestResult);
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lcm/resources/close.png"))); // NOI18N
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout panelTestLayout = new javax.swing.GroupLayout(panelTest);
         panelTest.setLayout(panelTestLayout);
         panelTestLayout.setHorizontalGroup(
@@ -172,22 +164,17 @@ public class FrameMain extends javax.swing.JFrame {
             .addGroup(panelTestLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelTestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelMain, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE)
-                    .addGroup(panelTestLayout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton4)))
+                    .addComponent(panelMain, javax.swing.GroupLayout.DEFAULT_SIZE, 519, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         panelTestLayout.setVerticalGroup(
             panelTestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelTestLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(panelMain, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
+                .addComponent(panelMain, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelTestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -200,21 +187,17 @@ public class FrameMain extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonIntroductionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonIntroductionActionPerformed
-        showCard("card1");
-    }//GEN-LAST:event_buttonIntroductionActionPerformed
+    private void buttonTestResultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTestResultActionPerformed
+        showResult();
+    }//GEN-LAST:event_buttonTestResultActionPerformed
 
     private void buttonIshiharaTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonIshiharaTestActionPerformed
         showCard("card2");
     }//GEN-LAST:event_buttonIshiharaTestActionPerformed
 
-    private void buttonTestResultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTestResultActionPerformed
-        showResult();
-    }//GEN-LAST:event_buttonTestResultActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void buttonIntroductionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonIntroductionActionPerformed
+        showCard("card1");
+    }//GEN-LAST:event_buttonIntroductionActionPerformed
 
     public void showResult() {
         showCard("card3");
@@ -275,7 +258,6 @@ public class FrameMain extends javax.swing.JFrame {
     private javax.swing.JButton buttonIshiharaTest;
     private javax.swing.JButton buttonTestResult;
     private lcm.component.IPanelBg iPanelBg1;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

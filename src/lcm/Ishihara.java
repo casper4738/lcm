@@ -77,8 +77,6 @@ public class Ishihara {
         }
         System.out.println("HASIL : " + hasil);
     }
-    int protanopia, merahHijau, deuteranopia, butaWarnaMonokromatSelBatang, butaWarnaKonokromatSelKerucut;
-    int normal = 0;
 
     //test ishihara
     private final Object[] plate;
@@ -143,10 +141,10 @@ public class Ishihara {
         correct[22] = 42;
         correct[23] = 35;
         correct[24] = 96;
-        correct[25] = 26;
-        correct[26] = 42;
-        correct[27] = 0;
-        correct[28] = 0;
+        correct[25] = 2;
+        correct[26] = 2;
+        correct[27] = "";
+        correct[28] = "";
         correct[29] = 1;
         correct[30] = 1;
         correct[31] = 1;
@@ -173,7 +171,7 @@ public class Ishihara {
         optional[22] = "4;2";
         optional[23] = "3;5";
         optional[24] = "9;6";
-        
+
         optional[0] = 12;
         optional[9] = 2;
         optional[10] = 6;
@@ -183,10 +181,10 @@ public class Ishihara {
         optional[14] = 7;
         optional[15] = 16;
         optional[16] = 73;
-        optional[25] = 26;
-        optional[26] = 42;
-        optional[27] = 0;
-        optional[28] = 0;
+        optional[25] = 2;
+        optional[26] = 2;
+        optional[27] = "";
+        optional[28] = "";
         optional[29] = 1;
         optional[30] = 1;
         optional[31] = 1;
@@ -200,17 +198,17 @@ public class Ishihara {
 
     public boolean check(Plate plate) {
         try {
-            if (correct[plate.getPlate()].toString().equals(plate.getAnswer())) {
+            if (correct[plate.getPlate()].toString().equals(plate.getAnswer().toString())) {
                 return true;
             } else {
 
                 String[] string = optional[plate.getPlate()].toString().split(";");
                 if (string.length == 1) {
-                    if (string[0].equals(plate.getAnswer())) {
+                    if (string[0].equals(plate.getAnswer().toString())) {
                         return true;
                     }
                 } else {
-                    if (string[0].equals(plate.getAnswer()) || string[1].equals(plate.getAnswer())) {
+                    if (string[0].equals(plate.getAnswer().toString()) || string[1].equals(plate.getAnswer().toString())) {
                         return true;
                     }
                 }

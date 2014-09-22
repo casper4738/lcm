@@ -44,7 +44,7 @@ public class PanelIshiharaTest extends javax.swing.JPanel {
         this.main = main;
         number = 0;
         format = new DecimalFormat("#00");
-        jTextField2.setDocument(new FilterInput().getTextLimit(2, false));
+        jTextField2.setDocument(new FilterInput().getOnlyNumber(2));
         timer = new Timer(1000, new ActionListener() {
             private int s = 0;
             private int m = 0;
