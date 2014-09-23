@@ -387,29 +387,29 @@ public class PanelIshiharaTest extends javax.swing.JPanel {
         } catch (Exception e) {
         }
 
-//        int z = FrameMain.USER.getNumberTest();
-//        z = z % 32;
-//        for (int i = 0; i < 38; i++) {
-//            Plate plate = new Plate();
-//            plate.setPlate(z);
-//            plate.setType("");
-//            plate.setAnswer("");
-//            plate.setResult(false);
-//            listPlates.add(plate);
-//            
-//            System.out.println(i+"|"+z);
-//            
-//            z = main.getLinearCongruen(z);
-//        }
-
+        int z = FrameMain.USER.getNumberTest();
+        z = z % 32;
         for (int i = 0; i < 38; i++) {
             Plate plate = new Plate();
-            plate.setPlate(i);
+            plate.setPlate(z);
             plate.setType("");
             plate.setAnswer("");
             plate.setResult(false);
             listPlates.add(plate);
+            
+            System.out.println(i+"|"+z);
+            
+            z = main.getLinearCongruen(z);
         }
+//
+//        for (int i = 0; i < 38; i++) {
+//            Plate plate = new Plate();
+//            plate.setPlate(i);
+//            plate.setType("");
+//            plate.setAnswer("");
+//            plate.setResult(false);
+//            listPlates.add(plate);
+//        }
         nextQuestion();
 
         jTextField2.setText("");
