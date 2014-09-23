@@ -73,7 +73,7 @@ public class TableModelResult extends AbstractTableModel {
             case 1:
                 return list.get(list.get(rowIndex).getPlate()).getType().toUpperCase();
             case 2:
-                return list.get(rowIndex).getAnswer().toString().toUpperCase();
+                return (list.get(rowIndex).getAnswer()+"").toUpperCase();
             case 3:
                 return list.get(rowIndex).getCorrect();
             case 4:

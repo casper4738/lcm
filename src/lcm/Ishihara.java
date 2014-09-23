@@ -16,15 +16,15 @@ public class Ishihara {
         Object[] answer = new Object[38];
 
         answer[0] = 12;
-        answer[1] = 5;
-        answer[2] = 1;
-        answer[3] = 1;
-        answer[4] = 2;
-        answer[5] = 23;
-        answer[6] = 32;
+        answer[1] = 8;
+        answer[2] = 6;
+        answer[3] = 29;
+        answer[4] = 57;
+        answer[5] = "";
+        answer[6] = 3;
         answer[7] = 15;
         answer[8] = 74;
-        answer[9] = 2;
+        answer[9] = 1;
         answer[10] = 6;
         answer[11] = 97;
         answer[12] = 45;
@@ -40,10 +40,10 @@ public class Ishihara {
         answer[22] = 42;
         answer[23] = 35;
         answer[24] = 96;
-        answer[25] = 26;
-        answer[26] = 42;
-        answer[27] = 0;
-        answer[28] = 0;
+        answer[25] = 1;
+        answer[26] = 2;
+        answer[27] = "0";
+        answer[28] = "0";
         answer[29] = 1;
         answer[30] = 1;
         answer[31] = 1;
@@ -53,11 +53,6 @@ public class Ishihara {
         answer[35] = 1;
         answer[36] = 1;
         answer[37] = 1;
-
-        answer[21] = 2;
-        answer[22] = 4;
-        answer[23] = 3;
-        answer[24] = 9;
 
         ishihara.setAnswer(answer);
 
@@ -76,6 +71,7 @@ public class Ishihara {
             hasil = "BUTA WARNA TOTAL";
         }
         System.out.println("HASIL : " + hasil);
+        System.out.println("HASIL : " + ishihara.getResult());
     }
 
     //test ishihara
@@ -90,7 +86,7 @@ public class Ishihara {
     public String getResult() {
         int wrong = getWrong();
 
-        String hasil = "According to this test you  ";
+        String hasil = " | According to this test you  ";
         if (wrong <= 4) {
             hasil = hasil + "are NOT COLOR BLIND (NORMAL)";
         } else if (protan()) {
@@ -143,8 +139,8 @@ public class Ishihara {
         correct[24] = 96;
         correct[25] = 2;
         correct[26] = 2;
-        correct[27] = "";
-        correct[28] = "";
+        correct[27] = 0;
+        correct[28] = 0;
         correct[29] = 1;
         correct[30] = 1;
         correct[31] = 1;
@@ -171,6 +167,8 @@ public class Ishihara {
         optional[22] = "4;2";
         optional[23] = "3;5";
         optional[24] = "9;6";
+        optional[27] = 1;
+        optional[28] = 1;
 
         optional[0] = 12;
         optional[9] = 2;
@@ -183,8 +181,6 @@ public class Ishihara {
         optional[16] = 73;
         optional[25] = 2;
         optional[26] = 2;
-        optional[27] = "";
-        optional[28] = "";
         optional[29] = 1;
         optional[30] = 1;
         optional[31] = 1;
@@ -198,17 +194,17 @@ public class Ishihara {
 
     public boolean check(Plate plate) {
         try {
-            if (correct[plate.getPlate()].toString().equals(plate.getAnswer().toString())) {
+            if (correct[plate.getPlate()].toString().equals(plate.getAnswer()+"")) {
                 return true;
             } else {
 
                 String[] string = optional[plate.getPlate()].toString().split(";");
                 if (string.length == 1) {
-                    if (string[0].equals(plate.getAnswer().toString())) {
+                    if (string[0].equals(plate.getAnswer()+"")) {
                         return true;
                     }
                 } else {
-                    if (string[0].equals(plate.getAnswer().toString()) || string[1].equals(plate.getAnswer().toString())) {
+                    if (string[0].equals(plate.getAnswer()+"") || string[1].equals(plate.getAnswer()+"")) {
                         return true;
                     }
                 }
@@ -239,7 +235,7 @@ public class Ishihara {
     public int getWrong() {
         int x = 0;
         for (int i = 0; i < 38; i++) {
-            if (!correct[i].toString().equals(answer[i].toString())) {
+            if (!correct[i].toString().equals(answer[i]+"")) {
                 x++;
             }
         }
@@ -254,7 +250,7 @@ public class Ishihara {
 
         int x = 0;
         for (int i = 21; i <= 24; i++) {
-            if (correct[i].toString().equals(answer[i].toString())) {
+            if (correct[i].toString().equals(answer[i]+"")) {
                 x++;
             }
         }
@@ -270,7 +266,7 @@ public class Ishihara {
 
         int x = 0;
         for (int i = 21; i <= 24; i++) {
-            if (correct[i].toString().equals(answer[i].toString())) {
+            if (correct[i].toString().equals(answer[i]+"")) {
                 x++;
             }
         }

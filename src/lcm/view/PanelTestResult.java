@@ -60,6 +60,7 @@ public class PanelTestResult extends javax.swing.JPanel {
             plate.setWeak(ishihara.getWeak(plate));
             answer[i] = plate.getAnswer();
         }
+        
         tableModel.setList(list);
         table.setModel(tableModel);
         table.revalidate();
