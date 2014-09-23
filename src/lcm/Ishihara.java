@@ -85,7 +85,7 @@ public class Ishihara {
 
     public String getResult() {
         int wrong = getWrong();
-
+  
         String hasil = " | According to this test you  ";
         if (wrong <= 4) {
             hasil = hasil + "are NOT COLOR BLIND (NORMAL)";
